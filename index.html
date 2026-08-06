@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Riddim & Rags — The Zine, Vol. 01</title>
+<meta name="description" content="How dancehall and soca built the wardrobe of Caribbean women — the lead feature from The Zine, Vol. 01, 2026.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --ink:#f3ede1;
+    --void:#0c0c0c;
+    --carnival:#ff3d1a;   /* flag-red / carnival flame */
+    --gold:#e6b53d;       /* soca gold */
+    --teal:#0f5c56;       /* caribbean sea */
+    --line: rgba(243,237,225,0.18);
+    --serif: 'Fraunces', serif;
+    --display: 'Anton', sans-serif;
+    --sans: 'Bricolage Grotesque', sans-serif;
+  }
+
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0;
+    background:var(--void);
+    color:var(--ink);
+    font-family:var(--sans);
+    -webkit-font-smoothing:antialiased;
+  }
+
+  ::selection{ background:var(--carnival); color:var(--void); }
+
+  a{ color:inherit; }
+
+  img{ display:block; max-width:100%; }
+
+  /* ---------- topbar ---------- */
+  .topbar{
+    position:fixed; top:0; left:0; right:0; z-index:50;
+    display:flex; justify-content:space-between; align-items:center;
+    padding:20px clamp(20px,4vw,48px);
+    mix-blend-mode:difference;
+    font-family:var(--sans); font-weight:700;
+    letter-spacing:0.08em; text-transform:uppercase; font-size:0.72rem;
+  }
+  .topbar .mark{ font-family:var(--display); font-size:1.1rem; letter-spacing:0.02em; }
+  .topbar nav a{ text-decoration:none; margin-left:22px; opacity:0.85; }
+  .topbar nav a:hover{ opacity:1; }
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative; height:100svh; min-height:560px;
+    overflow:hidden;
+    display:flex; align-items:flex-end;
+  }
+  .hero img{
+    position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
+    object-position:center 22%;
+    filter:saturate(1.05) contrast(1.03);
+  }
+  .hero::after{
+    content:"";
+    position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(12,12,12,0.15) 0%, rgba(12,12,12,0.15) 40%, rgba(12,12,12,0.92) 96%);
+  }
+  .hero-inner{
+    position:relative; z-index:2;
+    width:100%;
+    padding:0 clamp(20px,4vw,48px) clamp(28px,5vw,64px);
+  }
+  .kicker{
+    display:flex; align-items:center; gap:10px;
+    font-family:var(--sans); font-weight:700; text-transform:uppercase;
+    letter-spacing:0.16em; font-size:0.72rem; color:var(--gold);
+    margin-bottom:18px;
+  }
+  .kicker .dot{ width:6px; height:6px; border-radius:50%; background:var(--carnival); }
+  h1.title{
+    font-family:var(--display);
+    font-weight:400;
+    text-transform:uppercase;
+    font-size:clamp(2.6rem, 9vw, 7.5rem);
+    line-height:0.86;
+    letter-spacing:-0.01em;
+    margin:0 0 20px;
+    max-width:16ch;
+  }
+  h1.title em{
+    font-style:normal;
+    color:var(--carnival);
+  }
+  .dek{
+    font-family:var(--serif); font-style:italic; font-weight:400;
+    font-size:clamp(1.05rem, 2vw, 1.5rem);
+    max-width:44ch; color:rgba(243,237,225,0.88);
+    line-height:1.5; margin:0 0 26px;
+  }
+  .byline{
+    display:flex; flex-wrap:wrap; gap:6px 22px;
+    font-size:0.78rem; text-transform:uppercase; letter-spacing:0.08em;
+    color:rgba(243,237,225,0.65);
+  }
+  .byline b{ color:var(--ink); font-weight:700; }
+
+  .scroll-cue{
+    position:absolute; right:clamp(20px,4vw,48px); bottom:24px; z-index:2;
+    writing-mode:vertical-rl; font-size:0.68rem; text-transform:uppercase;
+    letter-spacing:0.2em; color:rgba(243,237,225,0.6);
+    display:flex; align-items:center; gap:10px;
+  }
+  .scroll-cue .bar{ width:1px; height:46px; background:rgba(243,237,225,0.4); }
+
+  /* ---------- standfirst / masthead strip ---------- */
+  .masthead{
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    padding:16px clamp(20px,4vw,48px);
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(140px,1fr));
+    gap:10px 24px;
+    font-size:0.72rem; text-transform:uppercase; letter-spacing:0.06em;
+    color:rgba(243,237,225,0.75);
+  }
+  .masthead span{ display:block; color:var(--ink); font-weight:700; font-family:var(--sans); }
+
+  /* ---------- article body ---------- */
+  .wrap{
+    max-width:760px; margin:0 auto;
+    padding:clamp(52px,8vw,96px) clamp(20px,4vw,0px);
+  }
+  .lede{
+    font-family:var(--serif);
+    font-size:clamp(1.25rem, 2.4vw, 1.6rem);
+    line-height:1.55;
+    color:var(--ink);
+    margin-bottom:1.6em;
+  }
+  .lede::first-letter{
+    font-family:var(--display);
+    font-size:4.2rem;
+    float:left;
+    line-height:0.75;
+    margin:0.03em 0.08em 0 0;
+    color:var(--carnival);
+  }
+  .body p{
+    font-family:var(--serif);
+    font-size:1.08rem; line-height:1.75;
+    color:rgba(243,237,225,0.92);
+    margin:0 0 1.5em;
+  }
+  .body p.note{
+    font-family:var(--sans);
+    font-size:0.85rem;
+    color:rgba(243,237,225,0.55);
+    border-left:2px solid var(--carnival);
+    padding-left:16px;
+    font-style:normal;
+  }
+
+  .pull{
+    font-family:var(--display);
+    text-transform:uppercase;
+    font-size:clamp(1.6rem,4vw,2.6rem);
+    line-height:1.05;
+    color:var(--gold);
+    max-width:14ch;
+    margin:0.6em auto 1.1em;
+    padding:0.4em 0;
+  }
+
+  /* ---------- full bleed spreads ---------- */
+  .spread{
+    position:relative;
+    margin:clamp(40px,6vw,72px) 0;
+  }
+  .spread img{ width:100%; height:auto; }
+  .spread figcaption{
+    font-family:var(--sans); font-style:normal;
+    font-size:0.74rem; text-transform:uppercase; letter-spacing:0.05em;
+    color:rgba(243,237,225,0.55);
+    padding:10px 0 0;
+    max-width:760px;
+  }
+  .spread.bleed{
+    width:100vw; margin-left:calc(50% - 50vw); margin-right:calc(50% - 50vw);
+  }
+  .spread.bleed figcaption{
+    max-width:760px; margin:0 auto; padding:12px clamp(20px,4vw,0px) 0;
+  }
+  .spread.pair{
+    display:grid; grid-template-columns:1fr 1fr; gap:2px;
+  }
+  @media (max-width:640px){
+    .spread.pair{ grid-template-columns:1fr; }
+  }
+
+  /* ---------- interview block ---------- */
+  .qa{ margin:2.4em 0; }
+  .qa .q{
+    font-family:var(--sans); font-weight:700; text-transform:uppercase;
+    font-size:0.78rem; letter-spacing:0.05em; color:var(--carnival);
+    margin-bottom:0.5em;
+  }
+  .qa .a{
+    font-family:var(--serif); font-size:1.08rem; line-height:1.75;
+    color:rgba(243,237,225,0.92); margin:0 0 1.4em;
+  }
+
+  hr.rule{
+    border:none; border-top:1px solid var(--line); margin:3em 0;
+  }
+
+  /* ---------- credits ---------- */
+  .credits{
+    max-width:760px; margin:0 auto; padding:0 0 clamp(80px,10vw,120px);
+  }
+  .credits h2{
+    font-family:var(--display); text-transform:uppercase; font-weight:400;
+    font-size:clamp(1.6rem,4vw,2.4rem); color:var(--ink); margin:0 0 0.6em;
+  }
+  .credits-grid{
+    display:grid; grid-template-columns:repeat(auto-fill, minmax(220px,1fr));
+    gap:20px 32px; font-size:0.86rem;
+  }
+  .credits-grid dt{
+    text-transform:uppercase; letter-spacing:0.08em; font-size:0.68rem;
+    color:rgba(243,237,225,0.5); margin-bottom:4px; font-family:var(--sans);
+  }
+  .credits-grid dd{ margin:0; font-family:var(--serif); font-size:1.02rem; }
+
+  /* ---------- footer ---------- */
+  footer{
+    border-top:1px solid var(--line);
+    padding:32px clamp(20px,4vw,48px) 48px;
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;
+    font-size:0.75rem; color:rgba(243,237,225,0.5);
+  }
+  footer a{ text-decoration:underline; }
+
+  @media (prefers-reduced-motion:no-preference){
+    .reveal{ opacity:0; transform:translateY(24px); transition:opacity 0.9s ease, transform 0.9s ease; }
+    .reveal.in{ opacity:1; transform:none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="mark">THE ZINE</div>
+  <nav>
+    <a href="#feature">Feature</a>
+    <a href="#credits">Credits</a>
+  </nav>
+</div>
+
+<header class="hero">
+  <img src="images/cover.jpg" alt="Cover spread of The Zine, Vol. 01 — Caribbean fashion editorial">
+  <div class="hero-inner">
+    <div class="kicker"><span class="dot"></span>The Zine · Vol. 01 · 2026</div>
+    <h1 class="title">Riddim &amp; <em>Rags</em></h1>
+    <p class="dek">How dancehall and soca built the wardrobe of the Caribbean woman — a lead feature from The Zine's debut issue.</p>
+    <div class="byline">
+      <span><b>Photography</b> Ruona</span>
+      <span><b>Styling</b> Kambe Lovelace</span>
+      <span><b>Featuring</b> Keiseana Morrison &amp; Tmia Francis</span>
+    </div>
+  </div>
+  <div class="scroll-cue"><span class="bar"></span>Scroll</div>
+</header>
+
+<div class="masthead">
+  <div><span>Issue</span>Vol. 01, 2026</div>
+  <div><span>Section</span>Culture &amp; Fashion</div>
+  <div><span>Reading time</span>6 min</div>
+  <div><span>Photography</span>Ruona</div>
+  <div><span>Styling</span>Kambe Lovelace</div>
+</div>
+
+<main id="feature" class="wrap">
+
+  <p class="lede reveal">Before it was a runway reference, it was a fete. Long before dancehall and soca made it onto European mood boards, the wardrobe of the Caribbean woman was being written on the road — at Carnival, in the dancehall, on a blocked-off street with a sound system idling at the corner. This is the story of how the riddim dressed us.</p>
+
+  <p class="reveal">The Zine's debut issue traces that lineage — from the beading and mesh of a J'ouvert costume to the low-rise, high-shine silhouette that soca and dancehall exported to the world. It's a story about clothes, but really it's a story about who got to define glamour on their own terms, in their own climate, to their own beat.</p>
+
+  <figure class="spread bleed reveal">
+    <img src="images/spread-04.jpg" alt="Editorial fashion spread from The Zine, styled by Kambe Lovelace">
+    <figcaption>Styling — Kambe Lovelace · Photography — Ruona</figcaption>
+  </figure>
+
+  <p class="reveal">"Dancehall dressing was never an accident," the issue argues — it was armor and invitation at once: cut close enough to move in a fete that lasts till sunrise, bold enough to be seen from the back of the block. Soca did something similar in daylight, trading dancehall's shine for feathers, paint, and a wardrobe built for the road march rather than the dance floor.</p>
+
+  <p class="pull reveal">Glamour, on our own terms.</p>
+
+  <figure class="spread pair reveal">
+    <img src="images/spread-08.jpg" alt="Fashion editorial image, spread eight, from The Zine">
+    <img src="images/spread-09.jpg" alt="Fashion editorial image, spread nine, from The Zine">
+  </figure>
+
+  <hr class="rule">
+
+  <h2 style="font-family:var(--display); text-transform:uppercase; font-weight:400; font-size:clamp(1.6rem,4vw,2.2rem); margin-bottom:0.2em;">In Conversation</h2>
+  <p class="note">The Zine sat down with artist manager and entertainment lawyer <strong style="color:var(--ink)">Tyra Els</strong> to talk about how Caribbean music shapes the business — and the image — of the artists she represents.</p>
+
+  <div class="qa">
+    <p class="q">On the relationship between sound and style</p>
+    <p class="a">[Paste Tyra Els' exact quote from the print interview here. The Zine's original PDF has this text baked into a flattened image layout, so it couldn't be pulled automatically — drop the verbatim quote in and it'll sit in this space at full editorial weight.]</p>
+
+    <p class="q">On what she looks for when an artist is building an image</p>
+    <p class="a">[Paste the next quote/answer here.]</p>
+
+    <p class="q">On where Caribbean fashion is headed next</p>
+    <p class="a">[Paste closing quote here.]</p>
+  </div>
+
+  <figure class="spread bleed reveal">
+    <img src="images/spread-11.jpg" alt="Fashion editorial image, spread eleven, from The Zine">
+    <figcaption>Models — Keiseana Morrison, Tmia Francis</figcaption>
+  </figure>
+
+  <p class="reveal">What The Zine's photography keeps returning to is proximity — clothes shot close enough to see the sweat, the wear, the way fabric moves differently at 2 a.m. on a Carnival Tuesday than it does on a shoot day. That's the throughline of the issue: fashion as a document of how a culture actually moves, not how it's staged to look from a distance.</p>
+
+  <figure class="spread bleed reveal">
+    <img src="images/spread-13.jpg" alt="Fashion editorial image, spread thirteen, from The Zine">
+  </figure>
+
+</main>
+
+<section id="credits" class="credits">
+  <h2>Credits</h2>
+  <dl class="credits-grid">
+    <div><dt>Photography</dt><dd>Ruona</dd></div>
+    <div><dt>Styling</dt><dd>Kambe Lovelace</dd></div>
+    <div><dt>Models</dt><dd>Keiseana Morrison, Tmia Francis</dd></div>
+    <div><dt>Interview</dt><dd>Tyra Els</dd></div>
+    <div><dt>Issue</dt><dd>The Zine, Vol. 01 — 2026</dd></div>
+  </dl>
+</section>
+
+<footer>
+  <span>© 2026 The Zine. All rights reserved.</span>
+  <span>Photography and styling credited above. Do not reproduce without permission.</span>
+</footer>
+
+<script>
+  const els = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window){
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold:0.15 });
+    els.forEach(el=>io.observe(el));
+  } else {
+    els.forEach(el=>el.classList.add('in'));
+  }
+</script>
+
+</body>
+</html>
