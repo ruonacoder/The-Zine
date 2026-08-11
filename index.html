@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coming Soon</title>
+<meta name="description" content="Something new is coming. Sign up to be the first to know.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&family=Bricolage+Grotesque:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --ink:        #0b0906;
+    --cream:      #f4efe4;
+    --mustard:    #c8930b;
+    --carnival-red: #d21f3c;
+    --fishnet-cyan: #2fb6c4;
+    --overlay-top:    rgba(10,7,4,0.05);
+    --overlay-bottom: rgba(8,5,3,0.92);
+  }
+
+  *{ box-sizing:border-box; margin:0; padding:0; }
+
+  html,body{
+    height:100%;
+    width:100%;
+    overflow-x:hidden;
+  }
+
+  body{
+    font-family:'Bricolage Grotesque', sans-serif;
+    color:var(--cream);
+    background:var(--ink);
+  }
+
+  .stage{
+    position:relative;
+    min-height:100svh;
+    width:100%;
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-end;
+    overflow:hidden;
+  }
+
+  .stage__bg{
+    position:absolute;
+    inset:0;
+    background-image:url('images/groupshot.jpg');
+    background-size:cover;
+    background-position:center 18%;
+    background-repeat:no-repeat;
+    transform:scale(1.02);
+  }
+
+  .stage__scrim{
+    position:absolute;
+    inset:0;
+    background:
+      linear-gradient(to bottom, var(--overlay-top) 0%, rgba(10,7,4,0.15) 38%, var(--overlay-bottom) 78%, #060402 100%);
+  }
+
+  .stage__content{
+    position:relative;
+    z-index:2;
+    width:100%;
+    max-width:640px;
+    margin:0 auto;
+    padding:6vh 6vw 7vh;
+    text-align:center;
+    animation: rise 0.9s cubic-bezier(.2,.8,.2,1) both;
+  }
+
+  @keyframes rise{
+    from{ opacity:0; transform:translateY(18px); }
+    to{ opacity:1; transform:translateY(0); }
+  }
+
+  .kicker{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-weight:400;
+    font-size:clamp(0.8rem, 1.6vw, 1rem);
+    letter-spacing:0.08em;
+    color:var(--cream);
+    opacity:0.75;
+    margin-bottom:0.9rem;
+  }
+
+  h1.headline{
+    font-family:'Anton', sans-serif;
+    font-weight:400;
+    text-transform:uppercase;
+    font-size:clamp(2.6rem, 11vw, 5.5rem);
+    line-height:0.94;
+    letter-spacing:0.01em;
+    color:var(--cream);
+    text-shadow: 0 2px 24px rgba(0,0,0,0.45);
+  }
+
+  .rule{
+    display:flex;
+    justify-content:center;
+    gap:6px;
+    margin:1.1rem 0 1.4rem;
+  }
+  .rule span{
+    display:block;
+    height:4px;
+    width:38px;
+    border-radius:2px;
+  }
+  .rule span:nth-child(1){ background:var(--carnival-red); }
+  .rule span:nth-child(2){ background:var(--mustard); }
+  .rule span:nth-child(3){ background:var(--fishnet-cyan); }
+
+  .subcopy{
+    font-family:'Fraunces', serif;
+    font-weight:400;
+    font-size:clamp(0.95rem, 2.2vw, 1.15rem);
+    line-height:1.5;
+    color:var(--cream);
+    opacity:0.88;
+    max-width:38ch;
+    margin:0 auto 2rem;
+  }
+
+  form.signup{
+    display:flex;
+    flex-wrap:wrap;
+    gap:0.6rem;
+    justify-content:center;
+    background:rgba(244,239,228,0.06);
+    border:1px solid rgba(244,239,228,0.18);
+    backdrop-filter:blur(6px);
+    -webkit-backdrop-filter:blur(6px);
+    border-radius:999px;
+    padding:0.5rem;
+    max-width:480px;
+    margin:0 auto;
+  }
+
+  .signup input[type="email"]{
+    flex:1 1 220px;
+    min-width:0;
+    background:transparent;
+    border:none;
+    outline:none;
+    color:var(--cream);
+    font-family:'Bricolage Grotesque', sans-serif;
+    font-size:1rem;
+    padding:0.85rem 1rem;
+  }
+  .signup input[type="email"]::placeholder{
+    color:rgba(244,239,228,0.55);
+  }
+
+  .signup button{
+    flex:0 0 auto;
+    font-family:'Bricolage Grotesque', sans-serif;
+    font-weight:700;
+    font-size:0.88rem;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--ink);
+    background:var(--cream);
+    border:none;
+    border-radius:999px;
+    padding:0.85rem 1.6rem;
+    cursor:pointer;
+    transition:transform 0.15s ease, background 0.2s ease;
+    white-space:nowrap;
+  }
+  .signup button:hover{ background:var(--mustard); }
+  .signup button:active{ transform:scale(0.97); }
+  .signup button:disabled{ opacity:0.6; cursor:default; }
+
+  .form-msg{
+    min-height:1.4rem;
+    margin-top:0.9rem;
+    font-size:0.88rem;
+    font-family:'Bricolage Grotesque', sans-serif;
+  }
+  .form-msg.ok{ color:#8fe3c8; }
+  .form-msg.err{ color:#ff9d9d; }
+
+  .fine-print{
+    margin-top:1.6rem;
+    font-size:0.72rem;
+    letter-spacing:0.04em;
+    color:rgba(244,239,228,0.45);
+  }
+
+  @media (max-width:480px){
+    .stage__content{ padding:5vh 6vw 6vh; }
+    .stage__bg{ background-position:center 14%; }
+    form.signup{ border-radius:20px; }
+    .signup input[type="email"], .signup button{ flex:1 1 100%; }
+    .signup button{ width:100%; }
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    .stage__content{ animation:none; }
+  }
+
+  ::selection{ background:var(--carnival-red); color:var(--cream); }
+</style>
+</head>
+<body>
+
+<div class="stage">
+  <div class="stage__bg"></div>
+  <div class="stage__scrim"></div>
+
+  <div class="stage__content">
+    <p class="kicker">something new is on the way</p>
+    <h1 class="headline">Coming Soon</h1>
+    <div class="rule"><span></span><span></span><span></span></div>
+    <p class="subcopy">Be the first to know when it drops. No spam, just the announcement.</p>
+
+    <form class="signup" id="notifyForm" action="https://formspree.io/f/mgawklkn" method="POST">
+      <input type="email" name="email" id="emailInput" placeholder="you@email.com" required autocomplete="email">
+      <button type="submit" id="submitBtn">Notify me</button>
+    </form>
+    <p class="form-msg" id="formMsg"></p>
+
+    <p class="fine-print">Your email is only used to send this announcement.</p>
+  </div>
+</div>
+
+<script>
+  const form = document.getElementById('notifyForm');
+  const msg = document.getElementById('formMsg');
+  const btn = document.getElementById('submitBtn');
+
+  form.addEventListener('submit', async function(e){
+    e.preventDefault();
+    msg.textContent = '';
+    msg.className = 'form-msg';
+    btn.disabled = true;
+    btn.textContent = 'Sending...';
+
+    try{
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if(response.ok){
+        msg.textContent = "You're on the list. See you soon.";
+        msg.classList.add('ok');
+        form.reset();
+      } else {
+        msg.textContent = 'Something went wrong. Please try again.';
+        msg.classList.add('err');
+      }
+    } catch(err){
+      msg.textContent = 'Something went wrong. Please try again.';
+      msg.classList.add('err');
+    } finally {
+      btn.disabled = false;
+      btn.textContent = 'Notify me';
+    }
+  });
+</script>
+
+</body>
+</html>
