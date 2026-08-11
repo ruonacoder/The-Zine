@@ -50,7 +50,7 @@
     inset:0;
     background-image:url('images/groupshot.jpg');
     background-size:cover;
-    background-position:center 30%;
+    background-position:center 36%;
     background-repeat:no-repeat;
     transform:scale(1.02);
   }
@@ -60,6 +60,26 @@
     inset:0;
     background:
       linear-gradient(to bottom, var(--overlay-top) 0%, rgba(10,7,4,0.15) 38%, var(--overlay-bottom) 78%, #060402 100%);
+  }
+
+  /* ---- logo header, pinned to the very top ---- */
+  .site-header{
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    z-index:3;
+    display:flex;
+    justify-content:center;
+    padding:clamp(1.1rem, 3vh, 2rem) 6vw;
+    background:linear-gradient(to bottom, rgba(6,4,2,0.65) 0%, rgba(6,4,2,0.0) 100%);
+  }
+
+  .site-header img{
+    width:clamp(140px, 24vw, 240px);
+    height:auto;
+    display:block;
+    filter:drop-shadow(0 2px 10px rgba(0,0,0,0.5));
   }
 
   .stage__content{
@@ -196,6 +216,7 @@
   @media (max-width:480px){
     .stage__content{ padding:5vh 6vw 6vh; }
     .stage__bg{ background-position:center 14%; }
+    .site-header img{ width:clamp(120px, 34vw, 180px); }
     form.signup{ border-radius:20px; }
     .signup input[type="email"], .signup button{ flex:1 1 100%; }
     .signup button{ width:100%; }
@@ -213,6 +234,10 @@
 <div class="stage">
   <div class="stage__bg"></div>
   <div class="stage__scrim"></div>
+
+  <header class="site-header">
+    <img src="images/logo.png" alt="The Zine">
+  </header>
 
   <div class="stage__content">
     <p class="kicker">something new is on the way</p>
